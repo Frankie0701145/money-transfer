@@ -27,7 +27,7 @@ development:
 
 test:
   adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: db/money_transfer_test.sqlite3
 
 production: 
   <<: *default
