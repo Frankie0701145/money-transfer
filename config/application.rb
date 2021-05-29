@@ -12,7 +12,11 @@ module MoneyTransfer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-
+    # remove the generation of view_specs and helper_specs when generating a controller
+    config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
