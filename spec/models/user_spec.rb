@@ -74,6 +74,13 @@ RSpec.describe User, type: :model do
     expect(user2).to be_invalid
   end
 
+  it 'is invalid when the phone_number is not unique' do
+    user3 = @user.dup
+    user3.email = 'somethingDifferent@gmail.com'
+    @user.save
+    expect(user3).to be_valid
+  end
+
   it 'is valid with valid attributes' do
     expect(@user).to be_valid
   end
