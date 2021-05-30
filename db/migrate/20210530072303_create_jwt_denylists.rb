@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 # Migration for create the JWTDenylist table
-class CreateJwtDenylist < ActiveRecord::Migration[6.0]
+class CreateJwtDenylists < ActiveRecord::Migration[6.0]
   def change
-    create_table :jwt_denylist do |t|
+    create_table :jwt_denylists do |t|
       t.string :jti, null: false
       t.datetime :exp, null: false
+      t.timestamps
     end
-    add_index :jwt_denylist, :jti
+    add_index :jwt_denylists, :jti
   end
 end
