@@ -17,4 +17,5 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Account < ApplicationRecord
+  belongs_to :user
 end
