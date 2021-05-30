@@ -1,8 +1,8 @@
-import {USER_DETAILS} from "../actionTypes";
+import {SET_USER_DETAILS} from "../actionTypes";
 
 const userDetails = (state={}, action)=>{
     switch(action.type){
-        case USER_DETAILS:
+        case SET_USER_DETAILS:
             return action.userDetails
         default:
             return state;

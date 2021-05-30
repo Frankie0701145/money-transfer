@@ -1,4 +1,4 @@
-export default LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export default LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-export default REQUESTING = "REQUESTING";
-export default SET_USER_DETAILS = "SET_USER_DETAILS";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const REQUESTING = "REQUESTING";
+export const SET_USER_DETAILS = "SET_USER_DETAILS";
