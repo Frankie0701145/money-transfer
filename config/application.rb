@@ -19,6 +19,12 @@ module MoneyTransfer
       config.generators.javascripts = false
       g.helper_specs false
     end
+
+    if Rails.env.test?
+      RSpec.configure do |config|
+        config.swagger_dry_run = false
+      end
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
