@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: jwt_denylists
@@ -13,4 +15,5 @@
 #  index_jwt_denylists_on_jti  (jti)
 #
 class JwtDenylist < ApplicationRecord
+  include Devise::JWT::RevocationStrategies::Denylist
 end
