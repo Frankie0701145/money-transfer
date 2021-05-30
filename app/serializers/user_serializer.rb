@@ -36,4 +36,8 @@ class UserSerializer
   attribute :full_name do |object|
     "#{object.first_name.capitalize} #{object.last_name.capitalize}"
   end
+
+  attribute :account
+
+  has_one :account
 end

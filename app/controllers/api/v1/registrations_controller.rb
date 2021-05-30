@@ -8,6 +8,7 @@ module Api
 
       def create
         build_resource(registration_params)
+        resource.account = Account.new amount: 0
         if resource.save
           render json: UserSerializer.new(resource).serialized_json,
                  status: :created

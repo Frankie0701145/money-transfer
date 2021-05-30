@@ -38,7 +38,17 @@ RSpec.describe "Api::Vi::Registrations", type: :request do
                          email: { type: :string },
                          phone_number: { type: :string },
                          created_at: { type: :string, format: 'date-time' },
-                         updated_at: { type: :string, format: 'date-time' }
+                         updated_at: { type: :string, format: 'date-time' },
+                         account: {
+                           type: :object,
+                           properties: {
+                             id: { type: :string },
+                             amount: { type: :string },
+                             user_id: { type: :string },
+                             created_at: { type: :string, format: 'date-time' },
+                             updated_at: { type: :string, format: 'date-time' }
+                           }
+                         }
                        }
                      }
                    }
