@@ -3,6 +3,21 @@
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
+#                      new_user_session GET    /users/login(.:format)                                                                   api/v1/sessions#new {:format=>:json}
+#                          user_session POST   /users/login(.:format)                                                                   api/v1/sessions#create {:format=>:json}
+#                  destroy_user_session DELETE /users/logout(.:format)                                                                  api/v1/sessions#destroy {:format=>:json}
+#                     new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new {:format=>:json}
+#                    edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit {:format=>:json}
+#                         user_password PATCH  /users/password(.:format)                                                                devise/passwords#update {:format=>:json}
+#                                       PUT    /users/password(.:format)                                                                devise/passwords#update {:format=>:json}
+#                                       POST   /users/password(.:format)                                                                devise/passwords#create {:format=>:json}
+#              cancel_user_registration GET    /users/cancel(.:format)                                                                  api/v1/registrations#cancel {:format=>:json}
+#                 new_user_registration GET    /users/sign_up(.:format)                                                                 api/v1/registrations#new {:format=>:json}
+#                edit_user_registration GET    /users/edit(.:format)                                                                    api/v1/registrations#edit {:format=>:json}
+#                     user_registration PATCH  /users(.:format)                                                                         api/v1/registrations#update {:format=>:json}
+#                                       PUT    /users(.:format)                                                                         api/v1/registrations#update {:format=>:json}
+#                                       DELETE /users(.:format)                                                                         api/v1/registrations#destroy {:format=>:json}
+#                                       POST   /users(.:format)                                                                         api/v1/registrations#create {:format=>:json}
 #                                  root GET    /                                                                                        homepage#index
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
