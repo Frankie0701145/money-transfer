@@ -3,6 +3,8 @@
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
+#                              rswag_ui        /api-docs                                                                                Rswag::Ui::Engine
+#                             rswag_api        /api-docs                                                                                Rswag::Api::Engine
 #                      new_user_session GET    /users/login(.:format)                                                                   api/v1/sessions#new {:format=>:json}
 #                          user_session POST   /users/login(.:format)                                                                   api/v1/sessions#create {:format=>:json}
 #                  destroy_user_session DELETE /users/logout(.:format)                                                                  api/v1/sessions#destroy {:format=>:json}
@@ -39,6 +41,11 @@
 #                    rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
 #             update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
+#
+# Routes for Rswag::Ui::Engine:
+#
+#
+# Routes for Rswag::Api::Engine:
 
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'

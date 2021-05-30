@@ -28,4 +28,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, :trackable,
          jwt_revocation_strategy: JwtDenylist
+
+  validates :email, presence: true
+  validates :phone_number, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
