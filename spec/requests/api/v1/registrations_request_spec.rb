@@ -37,8 +37,8 @@ RSpec.describe "Api::Vi::Registrations", type: :request do
                          full_name: { type: :string },
                          email: { type: :string },
                          phone_number: { type: :string },
-                         created_at: { type: :string, format: "date-time" },
-                         updated_at: { type: :string, format: "date-time" }
+                         created_at: { type: :string, format: 'date-time' },
+                         updated_at: { type: :string, format: 'date-time' }
                        }
                      }
                    }
@@ -46,8 +46,8 @@ RSpec.describe "Api::Vi::Registrations", type: :request do
                }
         let(:user) do
           { first_name: 'Joe', last_name: 'Doe',
-            password: 'password', email: 'joe@gmail.com', 
-            phone_number: "254701345123" }
+            password: 'password', email: 'joe@gmail.com',
+            phone_number: '254701345123' }
         end
         run_test!
       end
@@ -57,14 +57,8 @@ RSpec.describe "Api::Vi::Registrations", type: :request do
                  type: { type: :string },
                  errors: {
                    type: :array,
-                   errors: {
-                     type: :array,
-                     ites: {
-                       type: :object,
-                       properties: {
-                         type: :string
-                       }
-                     }
+                   items: {
+                     type: :string
                    }
                  }
                }
