@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 module Api
-  module ModuleName
+  module V1
     # The Registration Controller
     class RegistrationsController < Devise::RegistrationsController
       respond_to :json
-      before_action :build_userable, only: [:create]
 
       def create
         build_resource(registration_params)
