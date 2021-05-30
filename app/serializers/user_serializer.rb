@@ -25,7 +25,7 @@ class UserSerializer
   include FastJsonapi::ObjectSerializer
   attributes :phone_number, :email,
              :created_at, :updated_at
-  attribute full_name do |object|
+  attribute :full_name do |object|
     "#{object.first_name.capitalize} #{object.last_name.capitalize}"
   end
 end
