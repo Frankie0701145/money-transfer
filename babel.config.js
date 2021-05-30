@@ -32,7 +32,7 @@ module.exports = function(api) {
         {
           forceAllTransforms: true,
           useBuiltIns: 'entry',
-          corejs: 3,
+          corejs: "3.11.0",
           modules: false,
           exclude: ['transform-typeof-symbol']
         }
@@ -85,3 +85,4 @@ module.exports = function(api) {
     ].filter(Boolean)
   }
 }
+
