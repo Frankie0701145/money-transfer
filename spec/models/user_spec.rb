@@ -55,6 +55,11 @@ RSpec.describe User, type: :model do
     expect(@user).to be_invalid
   end
 
+  it 'is invalid if the email does not conform to email format' do
+    @user.email = 'joe'
+    expect(@user).to be_invalid
+  end
+
   it 'is invalid when the email is not unique' do
     user2 = @user.dup
     @user.save
