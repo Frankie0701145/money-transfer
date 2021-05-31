@@ -7,22 +7,26 @@ import 'antd/dist/antd.css';
 import Dashboard from "./Dashboard/Dashboard";
 import Cookies from 'js-cookie';
 import fetchUser from "../redux/actionCreators/fetch_user_details_actions";
+import ProtectedRoute from "./ProtectedRoute";
+import loginSuccess from "../redux/actionCreators/login_success_action";
 
 const App = (props)=>{
     let auth_token = Cookies.get("auth_token");
-    let loggedIn = auth_token !== undefined;
 
     useEffect(()=>{
+        
+        let loggedIn = auth_token !== undefined;
         // if loggedIn is true and redux signedIn state is false change the signedIn redux state to true
-        if(loggedIn && !props.signedIn){
+        if(loggedIn){
             props.fetchUser();
+            props.loginSuccess();
         }
     });
 
     return(
         <Switch>
             <Route exact path="/" component={HomePage}/>
-            <Route exact path="/dashboard" component={Dashboard}/>
+            <ProtectedRoute loggedIn={auth_token !== undefined} path="/dashboard" component={Dashboard}/>
         </Switch>
     )
 }
@@ -37,6 +41,9 @@ const mapDispatchToProps = (dispatch, ownProps)=>{
     return {
         fetchUser: ()=>{
             dispatch(fetchUser())
+        },
+        loginSuccess: ()=>{
+            dispatch(loginSuccess())
         }
     }
 }
