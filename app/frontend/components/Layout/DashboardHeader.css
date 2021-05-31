@@ -1,0 +1,15 @@
+#homepage-logo {
+    width: 56%;
+    height: auto;
+}
+
+#header {
+    background-color: #120321;
+}
+
+@media screen  and (max-width: 768px) {
+    #homepage-logo {
+        width: 300%;
+        height: auto;
+    }
+}
