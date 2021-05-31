@@ -4,6 +4,7 @@ import requesting from "../../redux/actionCreators/requesting_action";
 import setUserDetails from "../../redux/actionCreators/set_user_details_action";
 import loginSuccess from "../../redux/actionCreators/login_success_action";
 import openedModals from "../../redux/actionCreators/opened_modals_action";
+import {push} from 'connected-react-router';
 import Cookies from 'js-cookie';
 
 /**
@@ -42,6 +43,7 @@ const login = (credentials)=>{
             dispatch(requesting(false));
             message.success("Successful login. Welcome.", 5);
             dispatch(openedModals({loginModal: false}));
+            dispatch(push("/dashboard"));
         }).catch((err)=>{
             console.log(err);
             if(err.response.status && err.response.status === 401){

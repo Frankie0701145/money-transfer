@@ -33,7 +33,7 @@ const registerUser = (user)=>{
             dispatch(loginSuccess());
             message.success("Successful registered. Welcome.", 5);
             dispatch(openedModals({registerModal: false}));
-            console.log(data);
+            dispatch(push("/dashboard"));
         }).catch((err)=>{
             console.log(err.response);
             if(err.response && err.response.status && err.response.status === 422){
