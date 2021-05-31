@@ -3,6 +3,7 @@
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
+#                                  root GET    /                                                                                        homepage#index
 #                              rswag_ui        /api-docs                                                                                Rswag::Ui::Engine
 #                             rswag_api        /api-docs                                                                                Rswag::Api::Engine
 #                      new_user_session GET    /users/login(.:format)                                                                   api/v1/sessions#new {:format=>:json}
@@ -20,7 +21,9 @@
 #                                       PUT    /users(.:format)                                                                         api/v1/registrations#update {:format=>:json}
 #                                       DELETE /users(.:format)                                                                         api/v1/registrations#destroy {:format=>:json}
 #                                       POST   /users(.:format)                                                                         api/v1/registrations#create {:format=>:json}
-#                                  root GET    /                                                                                        homepage#index
+#                                api_v1 PATCH  /api/v1/accounts/:id/deposit(.:format)                                                   api/v1/accounts#deposit {:format=>:json}
+#                                       PATCH  /api/v1/accounts/:id/transfer(.:format)                                                  api/v1/accounts#transfer {:format=>:json}
+#                                       GET    /*all(.:format)                                                                          homepage#index
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -66,8 +69,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       # Accounts
-      patch '/accounts/:id/deposit', to: 'accounts#deposit'
-      patch '/accounts/:id/transfer', to: 'accounts#transfer'
+      patch '/accounts/deposit', to: 'accounts#deposit'
+      patch '/accounts/transfer', to: 'accounts#transfer'
+
+      # Users
+      get '/users', to: 'users#show'
     end
   end
 

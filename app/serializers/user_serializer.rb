@@ -37,7 +37,9 @@ class UserSerializer
     "#{object.first_name.capitalize} #{object.last_name.capitalize}"
   end
 
-  attribute :account
+  attribute :account do |object|
+    AccountSerializer.new object.account
+  end
 
   has_one :account
 end
