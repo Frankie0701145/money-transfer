@@ -4,6 +4,9 @@ import {
 } from "antd";
 import logo from "../../images/money_transfer.png";
 import {ArrowRightOutlined} from "@ant-design/icons";
+import LoginModal from "../Layout/Modals/LoginModal";
+import { connect } from 'react-redux';
+import openedModals from "../../redux/actionCreators/opened_modals_action";
 
 import "./HomePage.css";
 
@@ -37,7 +40,9 @@ class HomePage extends Component {
                             <Col>
                                 <Row align="middle">
                                     <Col>
-                                        <Button type="link">
+                                        <Button type="link"
+                                            onClick={()=>(this.props.openLoginModal())}
+                                        >
                                             <Title level={5} style={{color: "whitesmoke"}}>
                                                 Sign in
                                             </Title>
@@ -94,7 +99,9 @@ class HomePage extends Component {
                                     </Title>
                                 </Button>
 
-                                <Button type="link">
+                                <Button type="link"
+                                    onClick={()=>(this.props.openLoginModal())}
+                                >
                                     <Title level={5} style={{color: "green"}}>
                                         Sign in
                                     </Title>
@@ -111,9 +118,24 @@ class HomePage extends Component {
 
                 </Row>
 
+                {/* Modals */}
+                <LoginModal/>
             </Layout>
         )
     }
 }
 
-export default HomePage;
+const mapStateToProps = (state, ownProps) => (
+    {
+        requesting: state.requesting
+    }
+)
+const mapDispatchToProps = (dispatch, ownProps)=>(
+    {
+        openLoginModal: ()=>{
+            dispatch(openedModals({loginModal: true}));
+        }
+    }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

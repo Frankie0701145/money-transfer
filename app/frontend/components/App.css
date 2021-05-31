@@ -2,3 +2,38 @@
     padding: 0px;
     margin: 0px;
 }
+
+.primary {
+    background-color: rgb(40,128,29) !important;
+    color: white !important;
+}
+.primary:disabled {
+    border: 1px solid #999999 !important;
+    background-color: #cccccc !important;
+    color: #666666 !important;
+}
+
+
+.variant-primary {
+    color: #28801D !important;
+    border-color: #28801D !important;
+}
+
+.variant-primary:hover {
+    background-color: rgba(40,128,29,0.1 ) !important;
+}
+
+.variant-negative {
+    color: #861e10 !important;
+    border-color: #861e10 !important;
+}
+
+.variant-negative:disabled{
+    border: 1px solid #999999 !important;
+    background-color: #cccccc !important;
+    color: #666666 !important;
+}
+
+.variant-negative:hover {
+    background-color: rgb(134,30,16, 0.1) !important;
+}
