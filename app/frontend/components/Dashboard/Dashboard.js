@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import DashboardHeader from "../Layout/DashboardHeader";
 import AccountOverView from "./AccountOverview/AccountOverview";
 import {Layout} from "antd";
-import DepositModal from "../Layout/Modals/DepositModal"
+import DepositModal from "../Layout/Modals/DepositModal";
+import TransferModal from "../Layout/Modals/TransferModal";
 
 
 class Dashboard extends Component {
@@ -16,6 +17,7 @@ class Dashboard extends Component {
                 </Switch>
                 {/* Modals */}
                 <DepositModal />
+                <TransferModal/>
             </Layout>
         )
     }

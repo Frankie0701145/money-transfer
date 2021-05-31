@@ -39,7 +39,7 @@ class DashboardHeader extends Component {
                                             borderColor: "green",
                                             borderRadius: "0.2em"
                                         }}
-                                        onClick={()=>{}}
+                                        onClick={()=>{this.props.openTransferModal()}}
                                     >
                                         <Title level={5} style={{color: "white"}}>
                                             Transfer
@@ -63,6 +63,9 @@ const mapDispatchToProps = (dispatch, ownProps)=>(
     {
         openDepositModal: ()=>{
             dispatch(openedModals({depositModal: true}));
+        },
+        openTransferModal: ()=>{
+            dispatch(openedModals({transferModal: true}));
         }
     }
 )

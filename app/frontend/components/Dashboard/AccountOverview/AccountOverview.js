@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Layout, Row, Col, Typography, Divider} from "antd";
+import  { WalletFilled  } from "@ant-design/icons";
 
 const {Content} = Layout;
 
