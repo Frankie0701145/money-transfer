@@ -24,7 +24,7 @@ const logout = ( )=>{
             dispatch(push("/"));
             message.success("Successful logout. Good Bye.", 5)
         }).catch((err)=>{
-
+            console.log(err);
         });
     }
 }
