@@ -17,6 +17,8 @@
 #
 #  fk_rails_...  (account_id => accounts.id)
 #
-class DepositTransaction < ApplicationRecord
-  belongs_to :account
+require 'rails_helper'
+
+RSpec.describe DepositTransaction, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
