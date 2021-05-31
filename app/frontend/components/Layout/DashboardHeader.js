@@ -4,7 +4,8 @@ import {
 } from "antd";
 import logo from "../../images/money_transfer.png";
 import "./DashboardHeader.css";
-// import { Switch, Route, NavLink } from 'react-router-dom';
+import openedModals from "../../redux/actionCreators/opened_modals_action";
+import { connect } from 'react-redux';
 
 const {Title} = Typography;
 
@@ -24,7 +25,7 @@ class DashboardHeader extends Component {
                             <Row align="middle">
                                 <Col>
                                     <Button type="link"
-                                        onClick={()=>{}}
+                                        onClick={()=>{this.props.openDepositModal()}}
                                     >
                                         <Title level={5} style={{color: "whitesmoke"}}>
                                             Deposit
@@ -54,4 +55,16 @@ class DashboardHeader extends Component {
     }
 }
 
-export default DashboardHeader;
+const mapStateToProps = (state, ownProps) => (
+    {}
+)
+
+const mapDispatchToProps = (dispatch, ownProps)=>(
+    {
+        openDepositModal: ()=>{
+            dispatch(openedModals({depositModal: true}));
+        }
+    }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardHeader);
