@@ -63,6 +63,14 @@ Rails.application.routes.draw do
                      }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      # Accounts
+      patch '/accounts/:id/deposit', to: 'accounts#deposit'
+      patch '/accounts/:id/transfer', to: 'accounts#transfer'
+    end
+  end
+
   get '*all', to: 'homepage#index', constraints: lambda { |req|
     req.path.exclude? 'rails/active_storage'
   }
