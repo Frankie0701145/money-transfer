@@ -1,7 +1,10 @@
 import { message } from 'antd';
 import axios from 'axios';
 import requesting from "../../redux/actionCreators/requesting_action";
+import setUserDetails from "../../redux/actionCreators/set_user_details_action";
 import openedModals from './opened_modals_action';
+import loginSuccess from "../../redux/actionCreators/login_success_action";
+import Cookies from 'js-cookie';
 
 const registerUser = (user)=>{
     let payload = {
@@ -17,6 +20,7 @@ const registerUser = (user)=>{
     return(dispatch)=>{
         dispatch(requesting(true));
         return axios.post("/users", payload, config).then((response)=>{
+            let auth_token = response.headers.authorization.split(" ")[1]
             let data = response.data.data;
             let user = {
                 id: data.id,
@@ -24,6 +28,9 @@ const registerUser = (user)=>{
             }
             dispatch(setUserDetails(user));
             dispatch(requesting(false));
+            //set the auth_token cookie
+            Cookies.set("auth_token", auth_token, { expires: 14 });
+            dispatch(loginSuccess());
             message.success("Successful registered. Welcome.", 5);
             dispatch(openedModals({registerModal: false}));
             console.log(data);

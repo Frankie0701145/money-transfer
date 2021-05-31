@@ -10,6 +10,7 @@ module Api
         build_resource(registration_params)
         resource.account = Account.new amount: 0
         if resource.save
+          sign_in resource
           render json: UserSerializer.new(resource).serialized_json,
                  status: :created
         else
