@@ -30,7 +30,6 @@ const login = (credentials)=>{
         return axios.post("/users/login", payload, config).then((response)=>{
             let auth_token = response.headers.authorization.split(" ")[1]
             let data = response.data.data;
-            console.log(data);
             //set the auth_token cookie
             Cookies.set("auth_token", auth_token, { expires: 14 });
             //dispatch the loginSuccess action
@@ -41,7 +40,7 @@ const login = (credentials)=>{
             dispatch(setUserDetails(user));
             dispatch(loginSuccess());
             dispatch(requesting(false));
-            message.success("Successful login. Welcome.", 5)
+            message.success("Successful login. Welcome.", 5);
             dispatch(openedModals({loginModal: false}));
         }).catch((err)=>{
             console.log(err);

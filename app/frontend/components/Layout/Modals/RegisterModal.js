@@ -4,17 +4,31 @@ import {
     Form, Input
 } from "antd";
 
-import {LoginOutlined , 
-    CloseOutlined, MailOutlined, LockOutlined, PhoneOutlined 
+import {CloseOutlined, MailOutlined, LockOutlined, 
+    PhoneOutlined, SaveOutlined
 } from "@ant-design/icons";
 import { connect } from 'react-redux';
 import openedModals from "../../../redux/actionCreators/opened_modals_action";
+import registerUser from "../../../redux/actionCreators/register_action";
 
 // import "./LoginModal.css";
 
 const {Title} = Typography;
 
 class RegisterModal extends Component {
+
+    formRef = React.createRef();
+
+    save = ()=>{
+        this.formRef.current.submit();
+    }
+
+    onFinish = (values)=>{
+        this.props.registerUser(values);
+    }
+
+    
+
     render(){
         return(
             <Modal
@@ -23,7 +37,7 @@ class RegisterModal extends Component {
                 centered
                 title={
                     <Title level={4} style={{color: "#fff"}}>
-                        Login
+                        Signup
                     </Title>
                 }
                 onCancel={()=>{
@@ -42,11 +56,11 @@ class RegisterModal extends Component {
                     </Button>,
 
                     <Button 
-                        icon={<LoginOutlined/>}
+                        icon={<SaveOutlined/>}
                         className="primary"
                         key={2}
                         loading={this.props.requesting}
-                        onClick={()=>{}}
+                        onClick={()=>this.save()}
                     >
                         Register
                     </Button>
@@ -57,10 +71,17 @@ class RegisterModal extends Component {
                 visible={this.props.visible}
             >
                 <Row>
-                    <Form>
+                    <Form
+                        onFinish={this.onFinish}
+                        ref={this.formRef}
+                        name="user_registration"
+                        requiredMark="optional"
+                        layout="vertical"
+                    >
                         <Col xs={{span: 24}}>
                             <Form.Item
                                 label="First Name"
+                                name="first_name"
                                 rules={
                                     [
                                         {required: true, message: "First Name is required"}
@@ -73,6 +94,7 @@ class RegisterModal extends Component {
                         <Col xs={{span: 24}}>
                             <Form.Item
                                 label="Last Name"
+                                name="last_name"
                                 rules={
                                     [
                                         {required: true, message: "Last Name is required"}
@@ -86,11 +108,13 @@ class RegisterModal extends Component {
                         <Col xs={{span: 24}}>
                             <Form.Item
                                 label="Phone Number"
+                                name="phone_number"
                                 rules={
                                     [
                                         {required: true, message: "Phone Number is required"},
                                     ]
                                 }
+                                
                             >
                                 <Input prefix={<PhoneOutlined className="site-form-item-icon" />} 
                                        placeholder="254701145333"
@@ -101,6 +125,7 @@ class RegisterModal extends Component {
                         <Col xs={{span: 24}}>
                             <Form.Item
                                 label="Email"
+                                name="email"
                                 rules={
                                     [
                                         {required: true, message: "Email is required"},
@@ -117,6 +142,7 @@ class RegisterModal extends Component {
                         <Col xs={{span: 24}}>
                             <Form.Item
                                 label="Password"
+                                name="password"
                                 rules={
                                     [
                                         {required: true, message:"Password is required"}
@@ -146,6 +172,9 @@ const mapDispatchToProps = (dispatch, ownProps)=>(
     {
         closeModal: ()=>{
             dispatch(openedModals({registerModal: false}));
+        },
+        registerUser: (user)=>{
+            dispatch(registerUser(user));
         }
     }
 )

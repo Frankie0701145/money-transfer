@@ -80,6 +80,7 @@ class LoginModal extends Component{
                         onFinish={this.onFinish}
                         name="login"
                         requiredMark="optional"
+                        layout="vertical"
                     >
                         <Col xs={{span: 24}}>
                             <Form.Item
