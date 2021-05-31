@@ -4,7 +4,9 @@ import {
 } from "antd";
 import logo from "../../images/money_transfer.png";
 import "./DashboardHeader.css";
+import  { LogoutOutlined  } from "@ant-design/icons";
 import openedModals from "../../redux/actionCreators/opened_modals_action";
+import logout from "../../redux/actionCreators/logout_action";
 import { connect } from 'react-redux';
 
 const {Title} = Typography;
@@ -46,6 +48,14 @@ class DashboardHeader extends Component {
                                         </Title>
                                     </Button>
                                 </Col>
+
+                                <Col>
+                                    <Button type="icon" style={{backgroundColor: "inherit",  borderColor: 'inherit'}}
+                                        onClick={()=>this.props.logout()}
+                                    >
+                                        <LogoutOutlined  style={{fontSize: '1.6em', color: "white"}}/>
+                                    </Button>
+                                </Col>
                             </Row>
                         </Col>
                     </Row>
@@ -66,6 +76,9 @@ const mapDispatchToProps = (dispatch, ownProps)=>(
         },
         openTransferModal: ()=>{
             dispatch(openedModals({transferModal: true}));
+        },
+        logout: ()=>{
+            dispatch(logout());
         }
     }
 )
