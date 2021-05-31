@@ -7,6 +7,7 @@ import {ArrowRightOutlined} from "@ant-design/icons";
 import LoginModal from "../Layout/Modals/LoginModal";
 import { connect } from 'react-redux';
 import openedModals from "../../redux/actionCreators/opened_modals_action";
+import RegisterModal from "../Layout/Modals/RegisterModal"
 
 import "./HomePage.css";
 
@@ -55,7 +56,7 @@ class HomePage extends Component {
                                                 borderColor: "green",
                                                 borderRadius: "0.2em"
                                             }}
-                                        
+                                            onClick={()=>this.props.openRegisterModal()}
                                         >
                                             <Title level={5} style={{color: "white"}}>
                                                 Get Started
@@ -92,7 +93,7 @@ class HomePage extends Component {
                                         borderColor: "green",
                                         borderRadius: "0.2em"
                                     }}
-                                
+                                    onClick={()=>this.props.openRegisterModal()}
                                 >
                                     <Title level={5} style={{color: "white"}}>
                                         Get Started
@@ -120,6 +121,7 @@ class HomePage extends Component {
 
                 {/* Modals */}
                 <LoginModal/>
+                <RegisterModal/>
             </Layout>
         )
     }
@@ -134,6 +136,9 @@ const mapDispatchToProps = (dispatch, ownProps)=>(
     {
         openLoginModal: ()=>{
             dispatch(openedModals({loginModal: true}));
+        },
+        openRegisterModal: ()=>{
+            dispatch(openedModals({registerModal: true}))
         }
     }
 )
