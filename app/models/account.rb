@@ -18,4 +18,16 @@
 #
 class Account < ApplicationRecord
   belongs_to :user
+
+  def deposited(amount)
+    self.amount += amount
+  end
+
+  def transfered(amount)
+    balance = self.amount - amount
+    # Check and see if it is posible to transfer
+    raise ActiveRecord::RecordInvalid.new, { errors: { message: 'Insufficient funds' } } if balance.negative?
+
+    self.amount = balance
+  end
 end
