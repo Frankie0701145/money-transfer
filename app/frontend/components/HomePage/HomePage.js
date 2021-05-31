@@ -7,6 +7,7 @@ import {ArrowRightOutlined} from "@ant-design/icons";
 import LoginModal from "../Layout/Modals/LoginModal";
 import { connect } from 'react-redux';
 import openedModals from "../../redux/actionCreators/opened_modals_action";
+import Cookies from 'js-cookie';
 import RegisterModal from "../Layout/Modals/RegisterModal";
 
 import "./HomePage.css";
@@ -124,6 +125,14 @@ class HomePage extends Component {
                 <RegisterModal/>
             </Layout>
         )
+    }
+
+    componentDidMount(){
+        let auth_token = Cookies.get("auth_token");
+        let loggedIn = auth_token !== undefined;
+        if(loggedIn){
+            this.props.history.push("/dashboard");
+        }
     }
 }
 

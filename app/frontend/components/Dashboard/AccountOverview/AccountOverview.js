@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Layout, Row, Col, Typography, Divider} from "antd";
 import  { WalletFilled  } from "@ant-design/icons";
+import { connect } from 'react-redux';
 
 const {Content} = Layout;
 
@@ -32,7 +33,13 @@ class AccountOverView extends Component{
                                         style={{color: "green", verticallyAlign: "center"}}
                                     
                                     >
-                                        KES 1,000,000
+                                        KES {
+                                            this.props.userDetails.account?(
+                                                this.props.userDetails.account.data.attributes.amount 
+                                            ):(
+                                                0
+                                            )
+                                        }
                                     </Title>
                                 </Col>
                                 <Divider/>
@@ -55,4 +62,22 @@ class AccountOverView extends Component{
     }
 }
 
-export default AccountOverView;
+const mapStateToProps = (state, ownProps) => (
+    {
+        visible:  state.openedModals.depositModal? state.openedModals.depositModal: false,
+        requesting: state.requesting,
+        userDetails: state.userDetails
+    }
+)
+const mapDispatchToProps = (dispatch, ownProps)=>(
+    {
+        closeModal: ()=>{
+            dispatch(openedModals({depositModal: false}));
+        },
+        deposit: (values)=>{
+            dispatch(deposit(values));
+        }
+    }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountOverView);
