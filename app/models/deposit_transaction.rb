@@ -12,5 +12,7 @@
 #  updated_at             :datetime         not null
 #
 class DepositTransaction < ApplicationRecord
+  DEPOSIT_TYPE = %i[mpesa account].freeze
+  enum type: DEPOSIT_TYPE
   has_one :transaction, as: :transactable
 end
