@@ -11,5 +11,5 @@
 #  updated_at           :datetime         not null
 #
 class TransferTransaction < ApplicationRecord
-  has_one :transaction, as: :transactable
+  has_one :m_transaction, as: :transactable
 end
