@@ -24,7 +24,7 @@ class MTransactionSerializer
   attribute :transactable do |object|
     case object.transactable_type
     when 'DepositTransaction'
-      DepositeTransactionSerializer.new object.transactable
+      DepositTransactionSerializer.new object.transactable
     when 'TransferTransaction'
       TransferTransactionSerializer.new object.transactable
     end
