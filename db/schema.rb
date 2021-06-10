@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_204053) do
+ActiveRecord::Schema.define(version: 2021_06_10_212500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2021_06_10_204053) do
     t.index ["jti"], name: "index_jwt_denylists_on_jti"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "m_transactions", force: :cascade do |t|
     t.string "transactable_type"
     t.bigint "transactable_id"
     t.bigint "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_transactions_on_account_id"
-    t.index ["transactable_type", "transactable_id"], name: "index_transactions_on_transactable_type_and_transactable_id"
+    t.index ["account_id"], name: "index_m_transactions_on_account_id"
+    t.index ["transactable_type", "transactable_id"], name: "index_m_transactions_on_transactable_type_and_transactable_id"
   end
 
   create_table "transfer_transactions", force: :cascade do |t|
