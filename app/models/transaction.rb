@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: transactions
@@ -16,4 +18,5 @@
 #
 class Transaction < ApplicationRecord
   belongs_to :account
+  belongs_to :transactable, polymorphic: true
 end
