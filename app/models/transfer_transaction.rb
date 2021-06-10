@@ -4,11 +4,11 @@
 #
 # Table name: transfer_transactions
 #
-#  id                   :bigint           not null, primary key
-#  account_phone_number :string
-#  amount               :decimal(15, 2)
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
+#  id                    :bigint           not null, primary key
+#  amount                :decimal(15, 2)
+#  receiver_phone_number :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 class TransferTransaction < ApplicationRecord
   has_one :m_transaction, as: :transactable
