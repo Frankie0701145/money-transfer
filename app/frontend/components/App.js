@@ -5,19 +5,19 @@ import { connect } from 'react-redux';
 import "./App.css";
 import 'antd/dist/antd.css';
 import Dashboard from "./Dashboard/Dashboard";
-import Cookies from 'js-cookie';
 import fetchUser from "../redux/actionCreators/fetch_user_details_actions";
 import ProtectedRoute from "./ProtectedRoute";
+import Cookies from 'js-cookie';
 import loginSuccess from "../redux/actionCreators/login_success_action";
+import { withRouter } from "react-router";
 
 const App = (props)=>{
-    let auth_token = Cookies.get("auth_token");
-
+    
     useEffect(()=>{
-        
-        let loggedIn = auth_token !== undefined;
-        // if loggedIn is true and redux signedIn state is false change the signedIn redux state to true
-        if(loggedIn){
+        let auth_token = Cookies.get("auth_token");
+        let authTokenPresent = auth_token !== undefined;
+        // if the auth_token is present and login is false
+        if(authTokenPresent && !props.signedIn){
             props.fetchUser();
             props.loginSuccess();
         }
@@ -26,7 +26,7 @@ const App = (props)=>{
     return(
         <Switch>
             <Route exact path="/" component={HomePage}/>
-            <ProtectedRoute loggedIn={auth_token !== undefined} path="/dashboard" component={Dashboard}/>
+            <ProtectedRoute path="/dashboard" Component={Dashboard}/>
         </Switch>
     )
 }
@@ -48,4 +48,4 @@ const mapDispatchToProps = (dispatch, ownProps)=>{
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
