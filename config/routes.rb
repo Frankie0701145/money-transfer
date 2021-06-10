@@ -75,6 +75,7 @@ Rails.application.routes.draw do
 
       # Users
       get '/users', to: 'users#show'
+      get '/users/phone_numbers', to: 'users#phone_numbers'
     end
   end
 
