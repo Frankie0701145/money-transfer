@@ -4,8 +4,8 @@
 #
 #  id                     :bigint           not null, primary key
 #  amount                 :decimal(15, 2)
+#  deposit_type           :integer
 #  initiator_phone_number :string
-#  type                   :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
