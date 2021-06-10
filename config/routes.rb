@@ -24,6 +24,7 @@
 #         api_v1_accounts_mpesa_deposit PATCH  /api/v1/accounts/mpesa_deposit(.:format)                                                 api/v1/accounts#mpesa_deposit {:format=>:json}
 #      api_v1_accounts_account_transfer PATCH  /api/v1/accounts/account_transfer(.:format)                                              api/v1/accounts#account_transfer {:format=>:json}
 #                          api_v1_users GET    /api/v1/users(.:format)                                                                  api/v1/users#show {:format=>:json}
+#            api_v1_users_phone_numbers GET    /api/v1/users/phone_numbers(.:format)                                                    api/v1/users#phone_numbers {:format=>:json}
 #                                       GET    /*all(.:format)                                                                          homepage#index
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create

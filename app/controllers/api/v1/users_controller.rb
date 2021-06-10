@@ -11,6 +11,11 @@ module Api
         user = current_user
         render json: UserSerializer.new(user).serialized_json, status: 200
       end
+
+      def phone_numbers
+        phone_numbers = User.all.pluck :phone_number
+        render json: { type: 'Success', user_phone_numbers: phone_numbers }, status: 200
+      end
     end
   end
 end
