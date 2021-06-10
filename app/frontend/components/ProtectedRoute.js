@@ -1,13 +1,16 @@
 import {Redirect, Route} from "react-router-dom";
+import Cookies from 'js-cookie';
 import React from "react";
 
-const ProtectedRoute = ({component: Comp, loggedIn, path})=>{
-    console.log(loggedIn);
+
+const ProtectedRoute = ({Component, path})=>{
+    let auth_token = Cookies.get("auth_token");
+    let loggedIn = auth_token !== undefined;
     return (
         < Route
             path={path}
             render = { props =>{
-                return loggedIn ? <Comp {...props}/> : <Redirect to="/"/>;
+                return loggedIn ? <Component {...props}/> : <Redirect to="/"/>;
             }}
         />
     )
