@@ -1,5 +1,7 @@
 # == Schema Information
 #
+# frozen_string_literal: true
+
 # Table name: accounts
 #
 #  id         :bigint           not null, primary key
@@ -20,6 +22,9 @@ class AccountSerializer
   include FastJsonapi::ObjectSerializer
   attributes :amount, :user_id, :created_at,
              :updated_at
-  attribute :deposit_transactions
-  has_many :deposit_transactions
+
+  attribute :transaction do |object|
+    MTransactionSerializer.new object.m_transactions
+  end
+  has_many :m_transactions
 end
