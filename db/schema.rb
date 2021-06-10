@@ -40,11 +40,11 @@ ActiveRecord::Schema.define(version: 2021_06_10_201824) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "paymentable_type"
-    t.bigint "paymentable_id"
+    t.string "transactable_type"
+    t.bigint "transactable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["paymentable_type", "paymentable_id"], name: "index_transactions_on_paymentable_type_and_paymentable_id"
+    t.index ["transactable_type", "transactable_id"], name: "index_transactions_on_transactable_type_and_transactable_id"
   end
 
   create_table "users", force: :cascade do |t|

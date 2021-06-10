@@ -2,15 +2,15 @@
 #
 # Table name: transactions
 #
-#  id               :bigint           not null, primary key
-#  paymentable_type :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  paymentable_id   :bigint
+#  id                :bigint           not null, primary key
+#  transactable_type :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  transactable_id   :bigint
 #
 # Indexes
 #
-#  index_transactions_on_paymentable_type_and_paymentable_id  (paymentable_type,paymentable_id)
+#  index_transactions_on_transactable_type_and_transactable_id  (transactable_type,transactable_id)
 #
 require 'rails_helper'
 
