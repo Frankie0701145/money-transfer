@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 2021_06_10_201824) do
   create_table "transactions", force: :cascade do |t|
     t.string "transactable_type"
     t.bigint "transactable_id"
+    t.bigint "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["transactable_type", "transactable_id"], name: "index_transactions_on_transactable_type_and_transactable_id"
   end
 
