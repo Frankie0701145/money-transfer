@@ -21,8 +21,8 @@
 #                                       PUT    /users(.:format)                                                                         api/v1/registrations#update {:format=>:json}
 #                                       DELETE /users(.:format)                                                                         api/v1/registrations#destroy {:format=>:json}
 #                                       POST   /users(.:format)                                                                         api/v1/registrations#create {:format=>:json}
-#               api_v1_accounts_deposit PATCH  /api/v1/accounts/deposit(.:format)                                                       api/v1/accounts#deposit {:format=>:json}
-#              api_v1_accounts_transfer PATCH  /api/v1/accounts/transfer(.:format)                                                      api/v1/accounts#transfer {:format=>:json}
+#         api_v1_accounts_mpesa_deposit PATCH  /api/v1/accounts/mpesa_deposit(.:format)                                                 api/v1/accounts#mpesa_deposit {:format=>:json}
+#      api_v1_accounts_account_transfer PATCH  /api/v1/accounts/account_transfer(.:format)                                              api/v1/accounts#account_transfer {:format=>:json}
 #                          api_v1_users GET    /api/v1/users(.:format)                                                                  api/v1/users#show {:format=>:json}
 #                                       GET    /*all(.:format)                                                                          homepage#index
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
