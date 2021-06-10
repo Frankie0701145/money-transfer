@@ -18,7 +18,7 @@
 #
 class Account < ApplicationRecord
   belongs_to :user
-  has_many :deposit_transactions
+  has_many :transactions
 
   def deposit(amount)
     self.amount += amount

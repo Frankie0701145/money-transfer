@@ -15,4 +15,5 @@
 #  index_transactions_on_transactable_type_and_transactable_id  (transactable_type,transactable_id)
 #
 class Transaction < ApplicationRecord
+  belongs_to :account
 end
