@@ -25,11 +25,10 @@ ActiveRecord::Schema.define(version: 2021_05_31_111142) do
 
   create_table "deposit_transactions", force: :cascade do |t|
     t.decimal "amount", precision: 15, scale: 2
-    t.bigint "account_id", null: false
+    t.integer "type"
     t.string "initiator_phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_deposit_transactions_on_account_id"
   end
 
   create_table "jwt_denylists", force: :cascade do |t|
@@ -64,5 +63,4 @@ ActiveRecord::Schema.define(version: 2021_05_31_111142) do
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "deposit_transactions", "accounts"
 end
