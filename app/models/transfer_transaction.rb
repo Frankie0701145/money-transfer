@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: transfer_transactions
@@ -9,4 +11,5 @@
 #  updated_at           :datetime         not null
 #
 class TransferTransaction < ApplicationRecord
+  has_one :transaction, as: :transactable
 end
