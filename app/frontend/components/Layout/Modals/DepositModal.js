@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Modal, Button, Typography, Form, Row, Col, Input, InputNumber  } from "antd";
-import  { SendOutlined, CloseOutlined } from "@ant-design/icons";
+import  { SendOutlined, CloseOutlined, PhoneOutlined } from "@ant-design/icons";
 import openedModals from "../../../redux/actionCreators/opened_modals_action";
 import deposit from "../../../redux/actionCreators/deposit_action";
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ class DepositModal extends Component{
                 centered
                 title={
                     <Title level={4} style={{color: "#fff"}}>
-                        Mpesa Deposit
+                        Mpesa STK Push Deposit
                     </Title>
                 }
                 onCancel={()=>{
@@ -73,13 +73,18 @@ class DepositModal extends Component{
                             <Form.Item
                                 label="Phone Number"
                                 name="phone_number"
+                                placeholder="701145333" 
                                 rules={
                                     [
                                         { required: true, message: "Phone Number is required" },
+                                        { min: 7, message: "Phone number digits can't be less than 7." },
+                                        { max: 9, message: "Phone number digits can't be more than 9." }
                                     ]
                                 }
                             >
-                                <Input/>
+                                <Input prefix={<PhoneOutlined className="site-form-item-icon" />}
+                                    addonBefore="+254"
+                                />
                             </Form.Item>
                         </Col>
 

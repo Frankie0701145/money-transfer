@@ -8,7 +8,10 @@ import openedModals from "./opened_modals_action";
 const deposit = (transactionDetails)=>{
 
     let payload = {
-        accounts: transactionDetails 
+        accounts: {
+            ...transactionDetails, 
+            phone_number: `+254${transactionDetails.phone_number}`
+        }
     }
 
     let auth_token = Cookies.get("auth_token");
