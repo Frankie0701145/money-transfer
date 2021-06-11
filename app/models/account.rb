@@ -24,11 +24,13 @@ class Account < ApplicationRecord
     self.amount += amount
   end
 
-  def transfer(amount)
+  def transfer(amount, receiver_account)
     balance = self.amount - amount
     # Check and see if it is posible to transfer
     raise ActiveRecord::RecordInvalid.new, { errors: { message: 'Insufficient funds' } } if balance.negative?
 
     self.amount = balance
+    receiver_account.amount += amount
+    receiver_account
   end
 end

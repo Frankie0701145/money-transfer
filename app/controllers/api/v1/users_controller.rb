@@ -13,7 +13,7 @@ module Api
       end
 
       def phone_numbers
-        phone_numbers = User.all.pluck :phone_number
+        phone_numbers = User.where.not(id: current_user.id).pluck :phone_number
         render json: { type: 'Success', user_phone_numbers: phone_numbers }, status: 200
       end
     end

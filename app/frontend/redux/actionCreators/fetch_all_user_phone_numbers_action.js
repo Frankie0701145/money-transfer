@@ -19,7 +19,6 @@ const fetchAllUserPhoneNumbers = ()=>{
             let data = response.data;
             dispatch(fetchPhoneNumbersSuccess(data.user_phone_numbers));
             dispatch(requesting(false));
-            console.log(data);
         }).catch((err)=>{
             console.log(err.response);
             dispatch(requesting(false));

@@ -34,7 +34,7 @@ class AccountOverView extends Component{
                                     
                                     >
                                         KES {
-                                            this.props.userDetails.account?(
+                                            this.props.userDetails.account && this.props.userDetails.account.data?(
                                                 this.props.userDetails.account.data.attributes.amount 
                                             ):(
                                                 0

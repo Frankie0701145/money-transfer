@@ -1,4 +1,4 @@
-import {SET_USER_DETAILS, DEPOSIT_SUCCESS} from "../actionTypes";
+import {SET_USER_DETAILS, DEPOSIT_SUCCESS, TRANSFER_SUCCESS} from "../actionTypes";
 
 const userDetails = (state={}, action)=>{
     switch(action.type){
@@ -10,6 +10,13 @@ const userDetails = (state={}, action)=>{
                 account: {
                     data: action.account
                 }
+            }
+        case TRANSFER_SUCCESS:
+            return {
+                ...state, 
+                account: {
+                    data: action.account
+                } 
             }
         default:
             return state;

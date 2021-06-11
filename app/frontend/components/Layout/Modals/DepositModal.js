@@ -66,7 +66,7 @@ class DepositModal extends Component{
                         layout="vertical"
                         ref={this.formRef}
                         onFinish={this.onFinish}
-                        name="login"
+                        name="deposit"
                         requiredMark="optional"
                     >
                         <Col xs={{span: 24}}>
