@@ -9,9 +9,11 @@ import Cookies from 'js-cookie';
 const registerUser = (user)=>{
     let payload = {
         registration: {
-            ...user
+            ...user,
+            phone_number: `+254${user.phone_number}`
         }
     }
+    console.log(payload);
     let config = {
         headers:{
             'Content-Type': 'application/json'

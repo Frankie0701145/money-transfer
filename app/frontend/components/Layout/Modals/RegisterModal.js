@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {
     Col, Row, Typography, Layout, Button, Space,Modal,
-    Form, Input
+    Form, Input, Select
 } from "antd";
 
 import {CloseOutlined, MailOutlined, LockOutlined, 
@@ -14,6 +14,7 @@ import registerUser from "../../../redux/actionCreators/register_action";
 // import "./LoginModal.css";
 
 const {Title} = Typography;
+const {Option} = Select;
 
 class RegisterModal extends Component {
 
@@ -112,12 +113,14 @@ class RegisterModal extends Component {
                                 rules={
                                     [
                                         {required: true, message: "Phone Number is required"},
+                                        { min: 7, message: "Phone number digits can't be less than 7." },
+                                        { max: 9, message: "Phone number digits can't be more than 9." }
                                     ]
                                 }
                                 
                             >
                                 <Input prefix={<PhoneOutlined className="site-form-item-icon" />} 
-                                       placeholder="254701145333"
+                                       placeholder="701145333" addonBefore="+254"
                                 />
                             </Form.Item>
                         </Col>
