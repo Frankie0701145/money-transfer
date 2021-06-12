@@ -9,7 +9,8 @@ module Api
 
       def show
         user = current_user
-        render json: UserSerializer.new(user).serialized_json, status: 200
+        options = { includes: { account: [{ m_transactions: :transactable }] } }
+        render json: UserSerializer.new(user, options).serialized_json, status: 200
       end
 
       def phone_numbers
