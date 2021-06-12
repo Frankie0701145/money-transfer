@@ -33,4 +33,6 @@ class Account < ApplicationRecord
     receiver_account.amount += amount
     receiver_account
   end
+
+  # first.account.m_transactions.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).size
 end
