@@ -19,14 +19,14 @@ class AccountOverView extends Component{
             case "DepositTransaction":
                 console.log(transaction);
                 return(
-                    <Text style={{fontSize: "1em", fontWeight: "2.5em"}}>
+                    <Text style={{fontSize: "1em", fontWeight: "bold"}}>
                         You received {transaction.attributes.transactable.data.attributes.amount} KSH from this number {transaction.attributes.transactable.data.attributes.initiator_phone_number}     
                     </Text>
                 )
             case "TransferTransaction":
                 console.log(transaction);
                 return (
-                    <Text style={{fontSize: "1em", fontWeight: "2.5em"}}>
+                    <Text style={{fontSize: "1em", fontWeight: "bold"}}>
                         You transferred {transaction.attributes.transactable.data.attributes.amount} KSH to this number {transaction.attributes.transactable.data.attributes.receiver_phone_number}
                     </Text>
                 )
