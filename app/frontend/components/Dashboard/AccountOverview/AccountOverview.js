@@ -14,20 +14,27 @@ class AccountOverView extends Component{
 
 
     transaction = (transaction)=>{
-        console.log(transaction.attributes.transactable_type);
+        let amount = transaction.attributes.transactable.data.attributes.amount;
         switch(transaction.attributes.transactable_type){
             case "DepositTransaction":
-                console.log(transaction);
+                let initiatorPhoneNumber = transaction.attributes.transactable.data.attributes.initiator_phone_number;
+                let depositType = transaction.attributes.transactable.data.attributes.deposit_type;
+                let message;
+                if(depositType === "mpesa"){
+                    message = `You received ${amount} KSH from mpesa from this number ${initiatorPhoneNumber}.`;
+                }else if(depositType === "account"){
+                    message = `You received ${amount} KSH from money transfer from this number ${initiatorPhoneNumber}.`;
+                }
                 return(
                     <Text style={{fontSize: "1em", fontWeight: "bold"}}>
-                        You received {transaction.attributes.transactable.data.attributes.amount} KSH from this number {transaction.attributes.transactable.data.attributes.initiator_phone_number}     
+                        {message}     
                     </Text>
                 )
             case "TransferTransaction":
-                console.log(transaction);
+                let receiverPhoneNumber = transaction.attributes.transactable.data.attributes.receiver_phone_number;
                 return (
                     <Text style={{fontSize: "1em", fontWeight: "bold"}}>
-                        You transferred {transaction.attributes.transactable.data.attributes.amount} KSH to this number {transaction.attributes.transactable.data.attributes.receiver_phone_number}
+                        You transferred {amount} KSH to this number {receiverPhoneNumber}.
                     </Text>
                 )
         }
