@@ -16,8 +16,18 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.action_mailer.default_url_options = { 
-    host: Rails.application.credentials.frontend_url 
+  config.action_mailer.default_url_options = {
+    host: Rails.application.credentials.frontend_url
+  }
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '465',
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid_api_key,
+    tls: true,
+    ssl: true,
+    authentication: :plain
   }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
