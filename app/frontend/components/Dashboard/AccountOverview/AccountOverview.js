@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Layout, Row, Col, Typography, Divider} from "antd";
+import {Layout, Row, Col, Typography, Divider, List} from "antd";
 import  { WalletFilled  } from "@ant-design/icons";
 import { connect } from 'react-redux';
 
@@ -8,11 +8,47 @@ const {Content} = Layout;
 import "./AccountOverview.css";
 
 
-const {Title} = Typography;
+const {Title, Text} = Typography;
 
 class AccountOverView extends Component{
+
+
+    transaction = (transaction)=>{
+        console.log(transaction.attributes.transactable_type);
+        switch(transaction.attributes.transactable_type){
+            case "DepositTransaction":
+                console.log(transaction);
+                return(
+                    <Text style={{fontSize: "1em", fontWeight: "2.5em"}}>
+                        You received {transaction.attributes.transactable.data.attributes.amount} KSH from this number {transaction.attributes.transactable.data.attributes.initiator_phone_number}     
+                    </Text>
+                )
+            case "TransferTransaction":
+                console.log(transaction);
+                return (
+                    <Text style={{fontSize: "1em", fontWeight: "2.5em"}}>
+                        You transferred {transaction.attributes.transactable.data.attributes.amount} KSH to this number {transaction.attributes.transactable.data.attributes.receiver_phone_number}
+                    </Text>
+                )
+        }
+    }
+
+    transactions = (userDetails)=>{
+        if(!userDetails){
+            return [];
+        }else if(!userDetails.account){
+            return [];
+        }else if(!userDetails.account.data){
+            return []
+        }else if(!userDetails.account.data.attributes.transaction.data){
+            return []
+        }else{
+           return userDetails.account.data.attributes.transaction.data;
+        }
+    }
     
     render(){
+        let transactions = this.transactions(this.props.userDetails);
         return(
 
             <Row align="top" id="accountWrapper" justify="center">
@@ -50,6 +86,16 @@ class AccountOverView extends Component{
                                     >
                                         Recent Transactions
                                     </Title>
+                                    <List
+                                        dataSource={
+                                            transactions
+                                        }
+                                        renderItem={transaction => (
+                                            <List.Item>
+                                                {this.transaction(transaction)}
+                                            </List.Item>
+                                        )}
+                                    />
                                 </Col>
                             </Row>
                         </Col>
