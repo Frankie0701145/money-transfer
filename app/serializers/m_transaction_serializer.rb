@@ -14,6 +14,7 @@
 # Indexes
 #
 #  index_m_transactions_on_account_id                             (account_id)
+#  index_m_transactions_on_created_at                             (created_at)
 #  index_m_transactions_on_transactable_type_and_transactable_id  (transactable_type,transactable_id)
 #
 class MTransactionSerializer
