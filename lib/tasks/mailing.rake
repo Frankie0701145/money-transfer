@@ -5,9 +5,7 @@ namespace :mailing do
             m_transactions = user.account.m_transactions
                                  .where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
             if(m_transactions.size >= 1)
-                puts "There is m_transactions"
-                p m_transactions[0].transactable
-                MailingTransactionsMailer.daily m_transactions, user
+                MailingTransactionsMailer.daily(m_transactions, user).deliver_now
             end
         end
 
