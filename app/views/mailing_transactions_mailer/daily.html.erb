@@ -13,32 +13,33 @@
         <p>
            Here is your daily transaction:
         </p>
-        
-        <ol>
-            <%  m_transactions.each do |m_transaction| %>
-                <% amount = m_transaction.transactable.amount  %>
-                <% case %>
+
+        <ul>
+            <%  @m_transactions.each do |m_transaction| %>
+                <% amount = number_to_currency m_transaction.transactable.amount, :unit => "ksh "  %>
+                <% transactable_type = m_transaction.transactable_type %>
+                <% case transactable_type%>
                 <% when "DepositTransaction" %>
                     <% 
                         initiator_phone_number = m_transaction.transactable.initiator_phone_number
                         deposit_type = m_transaction.transactable.deposit_type
                     %>
                     <% if(deposit_type === "mpesa") %>
-                        <% message = "You received #{amount} KSH from mpesa from this number #{initiator_phone_number}." %>
+                        <% message = "You received #{amount} from mpesa from this number #{initiator_phone_number}." %>
                     <% elsif(deposit_type === "account") %>
-                        <% message = "You received #{amount} KSH from money transfer from this number #{initiator_phone_number}." %>
+                        <% message = "You received #{amount} from money transfer from this number #{initiator_phone_number}." %>
                     <% end %>
                     <li>
-                        <%=message%>.
+                        <%=message%>
                     </li>
                 <% when "TransferTransaction" %>
                     <% receiver_phone_number = m_transaction.transactable.receiver_phone_number%>
-                    <% message = "You transferred #{amount} KSH to this number #{receiver_phone_number}." %>
+                    <% message = "You transferred #{amount} to this number #{receiver_phone_number}." %>
                     <li>
-                        <%=message%>.
+                        <%=message%>
                     </li>
                 <% end %>
             <% end %>
-        </ol>
+        </ul>
     </body>
 </html>
