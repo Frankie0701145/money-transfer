@@ -5,7 +5,7 @@ module Api
     # This is the User Controller
     class UsersController < ApplicationController
       respond_to :json
-      before_action :authenticate_user!
+      before_action :authenticate_user!, only: [:phone_numbers]
 
       def show
         user = current_user
