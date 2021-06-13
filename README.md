@@ -1,24 +1,16 @@
 # README
+This is a web application that allows users to transfer funds between each other and also deposit.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is all the technology used to build this web application. 
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby on rails
 
-* System dependencies
+* Postgres.
 
-* Configuration
+* React with Redux.
 
-* Database creation
+* Rspec
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Heroku Cron To Go Scheduler
