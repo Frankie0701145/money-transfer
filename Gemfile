@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.6.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
@@ -23,6 +23,7 @@ gem 'webpacker', '~> 4.0'
 gem 'devise'
 gem 'devise-jwt', '~> 0.7.0'
 gem 'rack-cors'
+gem 'rspec-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -48,7 +49,6 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rails-erd'
-  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
