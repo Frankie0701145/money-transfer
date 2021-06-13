@@ -43,5 +43,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :phone_number, uniqueness: true
 
-  has_one :account
+  has_one :account, dependent: :destroy
 end
