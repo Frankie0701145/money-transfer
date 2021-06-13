@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+
+    <body>
+        <h3>
+           Hi <%= @full_name %>.
+        </h3>
+
+        <p>
+           Here is your daily transaction:
+        </p>
+        
+        <ol>
+            <%  m_transactions.each do |m_transaction| %>
+                <% amount = m_transaction.transactable.amount  %>
+                <% case %>
+                <% when "DepositTransaction" %>
+                    <% 
+                        initiator_phone_number = m_transaction.transactable.initiator_phone_number
+                        deposit_type = m_transaction.transactable.deposit_type
+                    %>
+                    <% if(deposit_type === "mpesa") %>
+                        <% message = "You received #{amount} KSH from mpesa from this number #{initiator_phone_number}." %>
+                    <% elsif(deposit_type === "account") %>
+                        <% message = "You received #{amount} KSH from money transfer from this number #{initiator_phone_number}." %>
+                    <% end %>
+                    <li>
+                        <%=message%>.
+                    </li>
+                <% when "TransferTransaction" %>
+                    <% receiver_phone_number = m_transaction.transactable.receiver_phone_number%>
+                    <% message = "You transferred #{amount} KSH to this number #{receiver_phone_number}." %>
+                    <li>
+                        <%=message%>.
+                    </li>
+                <% end %>
+            <% end %>
+        </ol>
+    </body>
+</html>
