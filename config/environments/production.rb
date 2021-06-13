@@ -30,6 +30,8 @@ Rails.application.configure do
     authentication: :plain
   }
 
+  config.action_mailer.raise_delivery_errors = true
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
