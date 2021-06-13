@@ -1,0 +1,2 @@
+namespace :mailing do
+end
